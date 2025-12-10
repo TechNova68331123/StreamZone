@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>TECHNOVA - Conectamos tu vida, cargamos tu futuro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TECHNOVA: Venta de planes de aplicaciones de streaming como Netflix, Prime Video, HBO Max, Disney+, Paramount+ y más, con soporte personalizado.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #000000;
+            --color-bg-alt: #111111;
+            --color-gold: #F0B323;
+            --color-text: #FFFFFF;
+            --color-muted: #CCCCCC;
+            --max-width: 1100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #222;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0.7rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-area img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text span:first-child {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span:last-child {
+            font-size: 0.7rem;
+            color: var(--color-muted);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn-nav {
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-gold);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--color-text);
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .section-wrapper {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--color-muted);
+            margin-bottom: 1.6rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.4rem;
+            font-size: 0.75rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: var(--color-bg-alt);
+            border: 1px solid #222;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-primary {
+            background: var(--color-gold);
+            color: #000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 1px solid #444;
+        }
+
+        .hero-image {
+            background: radial-gradient(circle at top, #333 0, #000 60%);
+            border-radius: 24px;
+            padding: 1.6rem;
+            border: 1px solid #222;
+        }
+
+        .hero-image h3 {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-apps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.7rem;
+        }
+
+        .hero-app-card {
+            background: #111111;
+            border-radius: 12px;
+            padding: 0.7rem;
+            border: 1px solid #222;
+            font-size: 0.8rem;
+        }
+
+        .hero-app-card strong {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--color-muted);
+            margin-bottom: 2rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.4rem;
+        }
+
+        .card {
+            background: var(--color-bg-alt);
+            border-radius: 16px;
+            padding: 1.3rem;
+            border: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+            margin-bottom: 0.7rem;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            background: #1b1b1b;
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .price {
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        /* Steps */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .step {
+            background: var(--color-bg-alt);
+            border-radius: 14px;
+            padding: 1.1rem;
+            border: 1px solid #222;
+            font-size: 0.9rem;
+        }
+
+        .step-number {
+            width: 26px;
+            height: 26px;
+            border-radius: 999px;
+            background: var(--color-gold);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Benefits */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .benefit-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: #111111;
+            border: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--color-gold);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.2rem;
+        }
+
+        .testimonial {
+            background: var(--color-bg-alt);
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid #222;
+            font-size: 0.85rem;
+        }
+
+        .testimonial strong {
+            display: block;
+            margin-top: 0.6rem;
+            color: var(--color-muted);
+            font-size: 0.8rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid #222;
+            padding: 0.8rem 0;
+        }
+
+        .faq-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item p {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.5rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+        }
+
+        input, textarea {
+            background: #111111;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 0.6rem 0.7rem;
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: 0.85rem;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 1.2rem 1rem;
+            font-size: 0.75rem;
+            color: var(--color-muted);
+        }
+
+        footer .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            nav ul {
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background: #000000;
+                padding: 0.8rem 1rem;
+                border-radius: 12px;
+                border: 1px solid #222;
+                flex-direction: column;
+                gap: 0.6rem;
+                display: none;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .btn-nav {
+                display: none;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo-area">
+            <img src="logo-technova.png" alt="TECHNOVA logo">
+            <div class="logo-text">
+                <span>TECHNOVA</span>
+                <span>Conectamos tu vida, cargamos tu futuro</span>
+            </div>
+        </div>
+
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#planes">Planes</a></li>
+                <li><a href="#como-funciona">Cómo funciona</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#testimonios">Clientes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <a class="btn-nav" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20información%20sobre%20los%20planes.">WhatsApp</a>
+    </div>
+</header>
+
+<section class="hero" id="inicio">
+    <div class="section-wrapper hero-inner">
+        <div>
+            <h1>Disfruta tus apps favoritas sin complicarte</h1>
+            <p>Netflix, Prime Video, Disney+, HBO Max, Paramount+ y más, con soporte personalizado y precios accesibles. TECHNOVA conecta tu entretenimiento con soluciones claras y rápidas.</p>
+
+            <div class="hero-badges">
+                <span class="badge">Streaming ilimitado</span>
+                <span class="badge">Soporte por WhatsApp</span>
+                <span class="badge">Planes flexibles</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="#planes">Ver planes</a>
+                <a class="btn btn-outline" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20comprar%20un%20plan.">Comprar por WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <h3>Apps disponibles</h3>
+            <div class="hero-apps">
+                <div class="hero-app-card">
+                    <strong>Netflix Premium</strong>
+                    <span>Series y películas en HD/4K. Ideal para compartir en familia.</span>
+                </div>
+                <div class="hero-app-card">
+                    <strong>Prime Video</strong>
+                    <span>Contenido exclusivo y estrenos a un precio accesible.</span>
+                </div>
+                <div class="hero-app-card">
+                    <strong>HBO Max</strong>
+                    <span>Estrenos de cine y series icónicas para todos los gustos.</span>
+                </div>
+                <div class="hero-app-card">
+                    <strong>Disney+ / Paramount+</strong>
+                    <span>Entretenimiento para todas las edades y franquicias clásicas.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="planes">
+    <div class="section-wrapper">
+        <h2 class="section-title">Planes & Marketplace</h2>
+        <p class="section-subtitle">Arma tu propio combo de entretenimiento con TECHNOVA. Elige las apps que necesitas y contáctanos para activar tu plan.</p>
+
+        <div class="cards-grid">
+            <!-- Plan 1 -->
+            <article class="card">
+                <div>
+                    <h3>Netflix Premium</h3>
+                    <p>Disfruta tus series y películas favoritas en HD y 4K, con posibilidad de varios dispositivos conectados.</p>
+                    <div class="tag-row">
+                        <span class="tag">HD / 4K</span>
+                        <span class="tag">Multi-dispositivo</span>
+                        <span class="tag">Catálogo completo</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20el%20plan%20Netflix%20Premium.">Comprar por WhatsApp</a>
+            </article>
+
+            <!-- Plan 2 -->
+            <article class="card">
+                <div>
+                    <h3>Prime Video</h3>
+                    <p>Películas, series y contenido exclusivo. Ideal para complementar tu paquete de entretenimiento.</p>
+                    <div class="tag-row">
+                        <span class="tag">Contenido exclusivo</span>
+                        <span class="tag">Series originales</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20el%20plan%20Prime%20Video.">Comprar por WhatsApp</a>
+            </article>
+
+            <!-- Plan 3 -->
+            <article class="card">
+                <div>
+                    <h3>HBO Max</h3>
+                    <p>Estrenos de cine, series premiadas y contenido para toda la familia en una sola app.</p>
+                    <div class="tag-row">
+                        <span class="tag">Estrenos</span>
+                        <span class="tag">Series icónicas</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20el%20plan%20HBO%20Max.">Comprar por WhatsApp</a>
+            </article>
+
+            <!-- Plan 4 -->
+            <article class="card">
+                <div>
+                    <h3>Disney+</h3>
+                    <p>Historias clásicas y nuevas producciones para todas las edades. Ideal para hogares con niños.</p>
+                    <div class="tag-row">
+                        <span class="tag">Familiar</span>
+                        <span class="tag">Animación</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20el%20plan%20Disney+.">Comprar por WhatsApp</a>
+            </article>
+
+            <!-- Plan 5 -->
+            <article class="card">
+                <div>
+                    <h3>Paramount+</h3>
+                    <p>Series, realities y películas con contenido exclusivo y variado para todo público.</p>
+                    <div class="tag-row">
+                        <span class="tag">Reality</span>
+                        <span class="tag">Series</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20el%20plan%20Paramount+.">Comprar por WhatsApp</a>
+            </article>
+
+            <!-- Plan 6 Combo -->
+            <article class="card">
+                <div>
+                    <h3>Combo TECHNOVA</h3>
+                    <p>Arma tu propio combo con dos o más apps y obtén un precio preferencial. Ideal para hogares y grupos.</p>
+                    <div class="tag-row">
+                        <span class="tag">Combo</span>
+                        <span class="tag">Ahorro</span>
+                        <span class="tag">Personalizado</span>
+                    </div>
+                    <div class="price">Desde X Bs/mes</div>
+                </div>
+                <a class="btn btn-primary" href="https://wa.me/591TU_NUMERO?text=Hola%20TECHNOVA,%20quiero%20armar%20un%20combo%20de%20apps.">Cotizar por WhatsApp</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="como-funciona">
+    <div class="section-wrapper">
+        <h2 class="section-title">¿Cómo funciona TECHNOVA?</h2>
+        <p class="section-subtitle">Un proceso simple para que empieces a disfrutar tu contenido favorito en cuestión de minutos.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Elige tus apps</h3>
+                <p>Revisa los planes disponibles y define las aplicaciones que quieres usar en tu celular, TV, tablet o PC.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Confirma y paga</h3>
+                <p>Te enviamos los detalles de tu plan por WhatsApp y realizas el pago por transferencia, QR u otro método acordado.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Recibe tu acceso</h3>
+                <p>Activamos tu servicio y te guiamos para que puedas ingresar sin problemas. Si necesitas ayuda, estamos contigo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="beneficios">
+    <div class="section-wrapper">
+        <h2 class="section-title">Beneficios de elegir TECHNOVA</h2>
+
+        <div class="benefits">
+            <div class="benefit">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Ahorro inteligente</h3>
+                    <p>Pagas solo por las apps y el tiempo que realmente usas, con opciones de combos y promociones.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Soporte cercano</h3>
+                    <p>Te atendemos por WhatsApp, resolvemos dudas y te acompañamos en la configuración.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Activación rápida</h3>
+                    <p>En la mayoría de los casos, tu plan está listo entre 15 y 60 minutos después de tu pago.</p>
+                </div>
+            </div>
+            <div class="benefit">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Flexibilidad total</h3>
+                    <p>Puedes cambiar de plan, agregar apps o ajustar tu combo según tus necesidades.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonios">
+    <div class="section-wrapper">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+
+        <div class="testimonials">
+            <article class="testimonial">
+                “Contraté Netflix y HBO con TECHNOVA y en menos de 15 minutos ya estaba viendo todo en mi TV.”
+                <strong>Carla – Oruro</strong>
+            </article>
+            <article class="testimonial">
+                “Me explicaron todo por WhatsApp y me ayudaron a configurar en mi Smart TV. Muy buena atención.”
+                <strong>Luis – La Paz</strong>
+            </article>
+            <article class="testimonial">
+                “Buen servicio, buenos precios y responden rápido cuando tengo alguna duda.”
+                <strong>Andrea – Santa Cruz</strong>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="faq">
+    <div class="section-wrapper">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+
+        <div class="faq-item">
+            <h4>¿En cuánto tiempo activan mi servicio?</h4>
+            <p>Usualmente entre 15 y 60 minutos después de confirmar el pago, según el plan y el horario.</p>
+        </div>
+        <div class="faq-item">
+            <h4>¿Qué pasa si no puedo ingresar a la cuenta?</h4>
+            <p>Nos escribes por WhatsApp y revisamos tu acceso. Si es necesario, te reasignamos o reconfiguramos tu plan.</p>
+        </div>
+        <div class="faq-item">
+            <h4>¿Cuántos dispositivos puedo usar?</h4>
+            <p>Depende de cada app y plan. Antes de activar, te indicamos exactamente cuántos dispositivos puedes conectar.</p>
+        </div>
+        <div class="faq-item">
+            <h4>¿Cómo puedo pagar?</h4>
+            <p>Aceptamos transferencia bancaria, QR u otros métodos que coordinamos directamente contigo por WhatsApp.</p>
+        </div>
+        <div class="faq-item">
+            <h4>¿Los planes son mensuales?</h4>
+            <p>La mayoría sí. Te avisamos antes de la fecha de renovación para que no te quedes sin servicio.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contacto">
+    <div class="section-wrapper">
+        <h2 class="section-title">Hablemos sobre tu plan TECHNOVA</h2>
+        <p class="section-subtitle">Cuéntanos qué aplicaciones quieres y te ayudamos a elegir la mejor combinación para ti.</p>
+
+        <div class="contact-grid">
+            <div>
+                <h3>Contacto directo</h3>
+                <p style="margin-bottom: 0.8rem;">Atendemos tus consultas por WhatsApp y correo electrónico.</p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/+591 68331123" target="_blank">+591 68331123</a></p>
+                <p><strong>Email:</strong> <a href="mailto:contacto@technova.com">contacto@technova.com</a></p>
+                <p><strong>Redes sociales:</strong> @technova (personaliza según tus usuarios)</p>
+
+                <div style="margin-top: 1.4rem;">
+                    <a class="btn btn-primary" href="https://wa.me/+591 68331123text=Hola%20TECHNOVA,%20quiero%20información%20sobre%20los%20planes.">Escribir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div>
+                <h3>Envíanos un mensaje</h3>
+                <form>
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" type="text" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label for="email">Correo electrónico</label>
+                        <input id="email" type="email" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" placeholder="Cuéntanos qué apps te interesan..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline">Enviar (formulario de ejemplo)</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <span>© <span id="year"></span> TECHNOVA. Todos los derechos reservados.</span>
+        <span>Conectamos tu vida, cargamos tu futuro.</span>
+    </div>
+</footer>
+
+<script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú móvil
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('nav-menu');
+
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>
